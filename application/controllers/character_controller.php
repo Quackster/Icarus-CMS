@@ -18,6 +18,8 @@ class Character extends Controller {
 		
 		if(!Session::isAuthed()) { Router::sendTo('index'); return; }
 		
+		UserDao::updateSSO();
+		
 		$this->load_view("client");
 		$this->view->publish();
 	

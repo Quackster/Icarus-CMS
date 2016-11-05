@@ -56,6 +56,15 @@ class UserDao {
 		return $status->value;
 		//return count(R::getAll("SELECT * FROM `users` WHERE `online` = :online", array(":online" => "1")));
 	}
+	
+	public static function updateSSO() {
+		
+		$sso_ticket = "sso-icarus-" . randString(10) . "-" . randString(6) . "-" . randString(10);
+		
+		Session::auth()->sso_ticket = $sso_ticket;
+		
+		R::exec("UPDATE users SET sso_ticket = ? WHERE id = ". Session::auth()->id, array($sso_ticket));
+	}
 
 	public static function create($data) {
 
@@ -63,17 +72,19 @@ class UserDao {
 		$user->username = $data->field->regusername;
 		$user->password = password($data->field->regpassword);
 		$user->email = $data->field->regemail;
-		$user->mission = "I'm a noob, help me out! :D";
+		$user->mission = "Icarus alpha tester";
 		$user->last_online = time();
 		$user->join_date = time();
 
-		if(isset($_SESSION['register']['gender'])) {
+		/*if(isset($_SESSION['register']['gender'])) {
 			if($_SESSION['register']['gender'] == 'male') {
 				$user->figure = Sierra::getConfig()->site->default_figures['male'];
 			} elseif($_SESSION['register']['gender'] == 'female') {
 				$user->figure = Sierra::getConfig()->site->default_figures['female'];
 			}
-		}
+		}*/
+		
+		$user->figure = "hr-155-42.hd-190-1.ch-255-82.lg-275-85.sh-290-80.ea-1401-62";
 
 		$id = R::store($user);
 

@@ -59,7 +59,7 @@ $build = "PRODUCTION-201512012203-525044429";//"PRODUCTION-201610182204-58774773
         var flashvars = {
             "client.allow.cross.domain": "1",
             "client.notify.cross.domain": "0",
-            "connection.info.host": "127.0.0.1",
+            "connection.info.host": "24.17.118.130",
             "connection.info.port": "30000",
             "site.url": "{$site->url}/",
             "url.prefix": "{$site->url}/",
@@ -97,7 +97,7 @@ $build = "PRODUCTION-201512012203-525044429";//"PRODUCTION-201610182204-58774773
 
         FlashExternalInterface.signoutUrl = "/disconnected";
 
-        var clientUrl = "{$site->url}/gordon/<?php echo $build; ?>/Habbo.swf?<?php echo rand(1,1000); ?>";
+        var clientUrl = "{$site->url}/gordon/<?php echo $build; ?>/Habbo.swf";
         swfobject.embedSWF(clientUrl, "flash-container", "100%", "100%", "11.1.0", "/client/expressInstall.swf", flashvars, params, null, FlashExternalInterface.embedSwfCallback);
 
         window.onbeforeunload = unloading;
