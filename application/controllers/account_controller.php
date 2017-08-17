@@ -20,13 +20,13 @@ class Account extends Controller {
 			$form->produce();
 			
 			$username = $form->field->username;
-			$password = password($form->field->password);
+			$password = $form->field->password;
 			
 			if(UserDao::exists('username', $username)) {
 				
 				$user = UserDao::getByKey('username', $username);
 			
-				if($user[0]['password'] == $password) {
+				if(password_verify($password, $user[0]['password'])) {
 					Session::set($user[0]['id']);
 					Router::sendTo("me");
 				} else {
@@ -61,7 +61,7 @@ class Account extends Controller {
 			$form->produce();
 
 			$username = $form->field->regusername;
-			$password = password($form->field->regpassword);
+			$password = password_hash($form->field->regpassword, PASSWORD_DEFAULT);
 			$email = $form->field->regemail;
 
 			if(!valid_email($email)) {

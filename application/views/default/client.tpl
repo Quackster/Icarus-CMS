@@ -59,7 +59,7 @@ $build = "PRODUCTION-201512012203-525044429";//"PRODUCTION-201610182204-58774773
         var flashvars = {
             "client.allow.cross.domain": "1",
             "client.notify.cross.domain": "0",
-            "connection.info.host": "24.17.118.130",
+            "connection.info.host": "127.0.0.1",
             "connection.info.port": "30000",
             "site.url": "{$site->url}/",
             "url.prefix": "{$site->url}/",
