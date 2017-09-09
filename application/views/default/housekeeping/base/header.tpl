@@ -75,6 +75,7 @@
               <li><a href="{$site->url}/housekeeping/campaigns/create">Create Campaign</a></li> -->
               <li class="nav-header">Hotel Management</li>
               <li><a href="{$site->url}/housekeeping/alert">Hotel Alert</a></li>
+              <li class="nav-header">Offer Management</li>
               <li><a href="{$site->url}/housekeeping/targetedoffers">View Targeted Offers</a></li>
               <li><a href="{$site->url}/housekeeping/targetedoffers/create">Create Targeted Offer</a></li>
               <!-- <li><a href="{$site->url}/housekeeping/catalog">Catalog</a></li>
