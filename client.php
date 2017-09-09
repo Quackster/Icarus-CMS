@@ -1,10 +1,6 @@
-<?php
 
-$path = "localhost";
-$build = "PRODUCTION-201701242205-837386173";
 
-?>
-
+ 
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -19,17 +15,17 @@ $build = "PRODUCTION-201701242205-837386173";
         var andSoItBegins = (new Date()).getTime();
     </script>
 	
-    <link rel="shortcut icon" href="{$site->url}/favicon.ico" type="image/vnd.microsoft.icon" />
-    <link rel="stylesheet" href="{$site->url}/web-gallery/static/styles/common.css" type="text/css" />
-    <script src="{$site->url}/web-gallery/static/js/libs2.js" type="text/javascript"></script>
-    <script src="{$site->url}/web-gallery/static/js/visual.js" type="text/javascript"></script>
-    <script src="{$site->url}/web-gallery/static/js/libs.js" type="text/javascript"></script>
-    <script src="{$site->url}/web-gallery/static/js/common.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="http://localhost/favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="stylesheet" href="http://localhost/web-gallery/static/styles/common.css" type="text/css" />
+    <script src="http://localhost/web-gallery/static/js/libs2.js" type="text/javascript"></script>
+    <script src="http://localhost/web-gallery/static/js/visual.js" type="text/javascript"></script>
+    <script src="http://localhost/web-gallery/static/js/libs.js" type="text/javascript"></script>
+    <script src="http://localhost/web-gallery/static/js/common.js" type="text/javascript"></script>
     <script type="text/javascript">
         document.habboLoggedIn = true;
         var habboReqPath = "";
-        var habboStaticFilePath = "{$site->url}/web-gallery/";
-        var habboImagerUrl = "{$site->url}/habbo-imaging/";
+        var habboStaticFilePath = "http://localhost/web-gallery/";
+        var habboImagerUrl = "http://localhost/habbo-imaging/";
         var habboPartner = "";
         var habboDefaultClientPopupUrl = "/client";
 
@@ -44,8 +40,8 @@ $build = "PRODUCTION-201701242205-837386173";
     <noscript>
         <meta http-equiv="refresh" content="0;url=/client/nojs" />
     </noscript>
-    <link rel="stylesheet" href="{$site->url}/web-gallery/styles/habboflashclient.css" type="text/css" />
-    <script src="{$site->url}/web-gallery/static/js/habboflashclient.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://localhost/web-gallery/styles/habboflashclient.css" type="text/css" />
+    <script src="http://localhost/web-gallery/static/js/habboflashclient.js" type="text/javascript"></script>
     <script type="text/javascript">
         FlashExternalInterface.loginLogEnabled = true;
 
@@ -57,36 +53,42 @@ $build = "PRODUCTION-201701242205-837386173";
         var flashvars = {
             "client.allow.cross.domain": "1",
             "client.notify.cross.domain": "0",
-            "connection.info.host": "localhost",
+            "connection.info.host": "127.0.0.1",
             "connection.info.port": "30000",
-            "site.url": "{$site->url}/",
-            "url.prefix": "{$site->url}/",
+            "site.url": "http://localhost/",
+            "url.prefix": "http://localhost/",
             "client.reload.url": "/disconnected",
-            "client.fatal.error.url": "{$site->url}/disconnected",
-            "client.connection.failed.url": "{$site->url}/disconnected",
-            "external.variables.txt": "http://localhost/gamedata/external_variables.txt?<?php echo rand(1,1000); ?>",
-            "external.texts.txt": "http://localhost/gamedata/external_flash_texts.txt?<?php echo rand(1,1000); ?>",
-            "external.override.texts.txt": "http://localhost/gamedata/override/external_flash_override_texts.txt?<?php echo rand(1,1000); ?>",
-            "external.override.variables.txt": "http://localhost/gamedata/override/external_override_variables.txt?<?php echo rand(1,1000); ?>",
+            "client.fatal.error.url": "http://localhost/disconnected",
+            "client.connection.failed.url": "http://localhost/disconnected",
+            "external.variables.txt": "http://localhost/gamedata/external_variables.txt?<?php echo sha1(rand(0, 200)); ?>",
+            "external.texts.txt": "http://localhost/gamedata/external_flash_texts.txt?<?php echo sha1(rand(0, 200)); ?>",
+            "external.override.texts.txt": "http://localhost/gamedata/override/external_flash_override_texts.txt",
+            "external.override.variables.txt": "http://localhost/gamedata/override/external_override_variables.txt",
             "productdata.load.url": "http://localhost/gamedata/productdata.txt",
             "furnidata.load.url": "http://localhost/gamedata/furnidata.xml",
             "hotelview.banner.url": "http://localhost/gamedata/banner.png",
             "use.sso.ticket": "1",
-            "sso.ticket": "{$user->ssoticket}",
+            "sso.ticket": "<?php echo $_GET['sso']; ?>",
             "processlog.enabled": "0",
             "account_id": "1",
             "client.starting": "Hotel is loading, please wait.",
 			"client.starting.revolving":"For science, you monster\/Loading funny message\u2026please wait.\/Would you like fries with that?\/Follow the yellow duck.\/Time is just an illusion.\/Are we there yet?!\/I like your t-shirt.\/Look left. Look right. Blink twice. Ta da!\/It\'s not you, it\'s me.\/Shhh! I\'m trying to think here.\/Loading pixel universe.",
-            "flash.client.url": "{$site->url}/gordon/<?php echo $build; ?>/",
+            "flash.client.url": "http://localhost/gordon/PRODUCTION-201701242205-837386173/",
             "user.hash": "ticket",
             "has.identity": "0",
             "flash.client.origin": "popup",
             "nux.lobbies.enabled": "false",
-            "country_code": "US"
+            "country_code": "US"<?php if(isset($_GET['roomid'])){ echo ","; } ?>
+			<?php
+				if(isset($_GET['roomid'])){
+			?>
+            "forward.type" : "2",
+            "forward.id" : "<?php echo $_GET['roomid']; ?>"
+			<?php } ?>
 
         };
         var params = {
-            "base": "{$site->url}/gordon/<?php echo $build; ?>/",
+            "base": "http://localhost/gordon/PRODUCTION-201701242205-837386173/",
             "allowScriptAccess": "always",
             "menu": "false"
         };
@@ -95,7 +97,7 @@ $build = "PRODUCTION-201701242205-837386173";
 
         FlashExternalInterface.signoutUrl = "/disconnected";
 
-        var clientUrl = "{$site->url}/gordon/<?php echo $build; ?>/Habbo.swf";
+        var clientUrl = "http://localhost/gordon/PRODUCTION-201701242205-837386173/Habbo.swf?<?php echo sha1(rand(0, 200)); ?>";
         swfobject.embedSWF(clientUrl, "flash-container", "100%", "100%", "11.1.0", "/client/expressInstall.swf", flashvars, params, null, FlashExternalInterface.embedSwfCallback);
 
         window.onbeforeunload = unloading;
@@ -139,12 +141,19 @@ $build = "PRODUCTION-201701242205-837386173";
             <div id="flash-container">
                 <div id="content" style="width: 400px; margin: 20px auto 0 auto;">
                     <div class="cbb clearfix">
-						<h2 class="title">Please update your Flash Player to the latest version.</h2>
-						<div class="box-content">
-							<p>You can install and download Adobe Flash Player here: <a href="http://get.adobe.com/flashplayer/">Install flash player</a>. More instructions for installation can be found here: <a href="http://www.adobe.com/products/flashplayer/productinfo/instructions/">More information</a></p>
-							<p><a href="http://www.adobe.com/go/getflashplayer"><img src="/client/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-						</div>
-						
+                        <h2 class="title">Installeer alsjeblieft de meest recente versie van de Adobe Flash Player</h2>
+                        <div class="box-content">
+                            <p>Je hebt de Adobe Flash Player nodig om de Beta te testen. Je kan deze vanaf de volgende link downloaden en installeren:
+                                <br>
+                                <br>
+
+                                <a target="blank" href="http://get.adobe.com/flashplayer/">Installeer Adobe Flash Player</a>.
+                                <br>
+                                <br> Klik op 'Agree and install now' om de installatie te starten. Op deze <a target="blank" href="http://www.adobe.com/products/flashplayer/productinfo/instructions/">pagina</a> vind je een Engelse instructie voor bij de installatie.</p>
+                            <p>
+                                <a href="http://www.adobe.com/go/getflashplayer"><img src="/client/get_flash_player.gif" alt="Get Adobe Flash player" /></a>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <noscript>

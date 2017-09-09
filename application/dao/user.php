@@ -70,12 +70,15 @@ class UserDao {
 
 		$user = R::dispense('users');
 		$user->username = $data->field->regusername;
-		$user->password = password($data->field->regpassword);
+		$user->password = password_hash($data->field->regpassword, PASSWORD_DEFAULT);
 		$user->email = $data->field->regemail;
-		$user->mission = "Icarus alpha tester";
+		$user->mission = Site::getConfig()->register->motto;
+		$user->credits = Site::getConfig()->register->credits;
+		$user->figure = Site::getConfig()->register->figure;
 		$user->last_online = time();
 		$user->join_date = time();
-
+		//"hr-155-42.hd-190-1.ch-255-82.lg-275-85.sh-290-80.ea-1401-62";
+		
 		/*if(isset($_SESSION['register']['gender'])) {
 			if($_SESSION['register']['gender'] == 'male') {
 				$user->figure = Sierra::getConfig()->site->default_figures['male'];
@@ -84,8 +87,6 @@ class UserDao {
 			}
 		}*/
 		
-		$user->figure = "hr-155-42.hd-190-1.ch-255-82.lg-275-85.sh-290-80.ea-1401-62";
-
 		$id = R::store($user);
 
 		//$info = R::dispense('user_info');

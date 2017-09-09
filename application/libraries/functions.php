@@ -10,11 +10,12 @@ function password($string) {
 
 function MUS($command, $data = '') 
 {
-    $MUSdata = $command . chr(1) . $data; 
-    $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp')); 
-    @socket_connect($socket, Site::getConfig()->ip, SiteDao::system("mus_port")); 
-    @socket_send($socket, $MUSdata, strlen($MUSdata), MSG_DONTROUTE);     
-    @socket_close($socket); 
+    $MUSdata = Site::getConfig()->site->mus_password . ';' . $command . ';' . $data; 
+    $socket = socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp')); 
+    
+    socket_connect($socket, Site::getConfig()->site->ip, Site::getConfig()->site->mus_port);// SiteDao::system("mus_port")); 
+    socket_send($socket, $MUSdata, strlen($MUSdata), MSG_DONTROUTE);     
+    socket_close($socket);
 }  
 
 function humanTiming ($time)

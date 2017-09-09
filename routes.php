@@ -11,6 +11,7 @@ Router::add('/account/register', 'account.register()');
 
 Router::add('/me', 'character.me()');
 Router::add('/hotel', 'character.hotel()');
+Router::add('/hotel/new', 'character.hotelnew()');
 Router::add('/client', 'character.hotel()');
 
 Router::add('/error/404', 'err.notFound()');
@@ -23,11 +24,18 @@ Router::add('/housekeeping/alert/send', 'housekeeping/alert.send()');
 Router::add('/housekeeping/save/note', 'housekeeping/save.note()');
 Router::add('/housekeeping/users', 'housekeeping/users.base()');
 Router::add('/housekeeping/users/edit', 'housekeeping/users.edit()');
+
 Router::add('/housekeeping/articles', 'housekeeping/articles.base()');
 Router::add('/housekeeping/articles/create', 'housekeeping/articles.add()');
 Router::add('/housekeeping/articles/edit', 'housekeeping/articles.edit()');
 Router::add('/housekeeping/articles/save', 'housekeeping/articles.save()');
 Router::add('/housekeeping/articles/delete', 'housekeeping/articles.delete()'); //campaigns
+
+Router::add('/housekeeping/targetedoffers', 'housekeeping/targetedoffers.base()');
+Router::add('/housekeeping/targetedoffers/save', 'housekeeping/targetedoffers.save()');
+Router::add('/housekeeping/targetedoffers/edit', 'housekeeping/targetedoffers.edit()');
+Router::add('/housekeeping/targetedoffers/create', 'housekeeping/targetedoffers.add()');
+
 Router::add('/housekeeping/campaigns', 'housekeeping/campaigns.base()');
 Router::add('/housekeeping/campaigns/edit', 'housekeeping/campaigns.edit()');
 Router::add('/housekeeping/campaigns/create', 'housekeeping/campaigns.create()');

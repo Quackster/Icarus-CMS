@@ -61,7 +61,7 @@ class Account extends Controller {
 			$form->produce();
 
 			$username = $form->field->regusername;
-			$password = password_hash($form->field->regpassword, PASSWORD_DEFAULT);
+			$password = $form->field->regpassword;
 			$email = $form->field->regemail;
 
 			if(!valid_email($email)) {

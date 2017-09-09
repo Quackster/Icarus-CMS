@@ -20,7 +20,7 @@ class Site {
 		Site::$config = new StdClass();
 		Site::$config->db = new StdClass();
 		Site::$config->site = new StdClass();
-		Site::$config->user = new StdClass();
+		Site::$config->register = new StdClass();
 		Site::$config->security = new StdClass();
 		Site::$session = new StdClass();
 		

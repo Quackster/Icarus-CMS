@@ -24,4 +24,15 @@ class Character extends Controller {
 		$this->view->publish();
 	
 	}
+    
+    public function hotelnew() {
+		
+		if(!Session::isAuthed()) { Router::sendTo('index'); return; }
+		
+		UserDao::updateSSO();
+		
+		$this->load_view("client_new");
+		$this->view->publish();
+	
+    }
 }

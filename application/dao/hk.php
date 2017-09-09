@@ -23,6 +23,16 @@ class HkDao {
 		return true;
 	}
     
+    public static function targetedoffer_exists($id) {
+		$count  = count(R::getAll("SELECT id FROM `targeted_offers` WHERE `id` = :value", array(":value" => $id)));
+
+		if($count != 1) {
+			return false;
+		}
+
+		return true;
+	}
+    
     public static function campaign_exists($id) {
 		$count  = count(R::getAll("SELECT id FROM `site_campaigns` WHERE `id` = :value", array(":value" => $id)));
 

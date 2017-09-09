@@ -30,8 +30,7 @@ class Alert extends Controller {
 		$this->view->publish();
 	}
     
-    public function send() {
-    
+    public function send() { 
 		$this->load_view('housekeeping/alert_send');
 		$this->view->publish();
 	}
