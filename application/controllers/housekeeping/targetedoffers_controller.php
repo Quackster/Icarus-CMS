@@ -106,7 +106,7 @@ class Targetedoffers extends Controller {
   
         /*Array ( [title] => Random MEGA Deal! [largeimage] => download.png [description] => [credits] => 50 [activitypoints] => -1 [activitypointstype] => 0 [expirydays] => 5 [enabled] => 1 [id] => 1 )*/
   
-        $fields = array("id", "title", "largeimage", "description", "credits", "activitypoints", "activitypointstype", "expirydays", "enabled");
+        $fields = array("id", "title", "largeimage", "description", "credits", "activitypoints", "activitypointstype", "expirydays", "enabled", "items");
         
         foreach ($fields as $value)
         {
@@ -134,7 +134,9 @@ class Targetedoffers extends Controller {
         
         //R::exec("UPDATE site_articles SET article_name = ?, article_topstory = '/c_images/Top_Story_Images/" . $_POST["topstory"] . "', article_description = ?, article_story = ? WHERE id = ". $_POST["id"], array($_POST["name"], $_POST["description"], $_POST["story"]));
         
-        R::exec("UPDATE targeted_offers SET title = ?, description = ?, credits = ?, activity_points = ?, activity_points_type = ?, large_image = ?, expire_time = ?, enabled = ? WHERE id = ?", array($_POST["title"], $_POST["description"], $_POST["credits"], $_POST["activitypoints"], $_POST["activitypointstype"], "targetedoffers/" . $_POST["largeimage"], $daysUntilExpiry, $_POST["enabled"], $_POST['id']));
+        R::exec("UPDATE targeted_offers SET title = ?, description = ?, credits = ?, activity_points = ?, activity_points_type = ?, large_image = ?, expire_time = ?, enabled = ?, items = ? WHERE id = ?", array($_POST["title"], $_POST["description"], $_POST["credits"], $_POST["activitypoints"], $_POST["activitypointstype"], "targetedoffers/" . $_POST["largeimage"], $daysUntilExpiry, $_POST["enabled"], $_POST["items"], $_POST['id']));
+        
+        MUS("reloadoffers", "");
         
         $this->load_view('housekeeping/response');
         $this->view->data->status = "Success";

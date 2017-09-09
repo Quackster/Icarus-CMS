@@ -84,16 +84,22 @@ function previewTS(el)
 	<p>     
         <select name="activitypointstype" id="activitypointstype">
             <option value="0">Duckets</option>
-            <option value="1">Snowflakes</option>
-            <option value="2">Hearts</option>
-            <option value="3">Gift Points</option>
-            <option value="4">Shells</option>
-            <option value="5">Diamonds</option>
+            <option value="101">Shells</option>
+            <option value="102">Nuts</option>
+            <option value="103">Stars</option>
+            <option value="104">Clouds</option>
+            <option value="105">Diamonds</option>
         </select>
     </p>
     
     Days until expiry:<br />
 	<p><input type="text" name="expirydays" value="<?php echo intval(($targetedoffer->expire_time - time()) / 60 / 60 / 24); ?>" style="width: 50%;"></p>
+    
+    Items:<br />
+    <br />
+    <p>This contains a list of item definition ID's seperated by ";". Enter the ID's more times if you wish for them to buy it more than once.</p>
+    <p><i>(Use command <strong>:debugfurniture</strong> and either double click furniture or browse catalogue to find these ID's)<i></p>
+	<p><input type="text" name="items" value="<?php echo $targetedoffer->items; ?>" placeholder="0000;0000;0000" style="width: 50%;"></p>
     
     Disable offer? <i>(Selecting yes will stop this offer being active)</i><br />
 	<p>     
