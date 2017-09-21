@@ -14,17 +14,17 @@ class Account extends Controller {
 
 		if(Session::isAuthed()) { Router::sendTo('me'); }
 		
-		$form = new Form("post", array('username', 'password'));
+		$form = new Form("post", array('email', 'password'));
 		
 		if($form->check()) {
 			$form->produce();
 			
-			$username = $form->field->username;
+			$email = $form->field->email;
 			$password = $form->field->password;
 			
-			if(UserDao::exists('username', $username)) {
+			if(UserDao::exists('email', $email)) {
 				
-				$user = UserDao::getByKey('username', $username);
+				$user = UserDao::getByKey('email', $email);
 			
 				if(password_verify($password, $user[0]['password'])) {
 					Session::set($user[0]['id']);
@@ -44,7 +44,7 @@ class Account extends Controller {
 			}
 		} else {
 			Session::setOwn('alert-type', 'error');
-			Session::setOwn('alert-message', 'You need to enter both your username and password');
+			Session::setOwn('alert-message', 'You need to enter both your email and password');
 			
 			Router::sendTo("index");
 		}
@@ -55,12 +55,12 @@ class Account extends Controller {
 		
 		if(Session::isAuthed()) { Router::sendTo('me'); }
 
-		$form = new Form("post", array('regusername', 'regemail', 'regpassword', 'regconfirmpassword'));
+		$form = new Form("post", array('regemail', 'regpassword', 'regconfirmpassword'));
 
 		if($form->check()) {
 			$form->produce();
 
-			$username = $form->field->regusername;
+			//$username = $form->field->regusername;
 			$password = $form->field->regpassword;
 			$email = $form->field->regemail;
 
@@ -71,7 +71,7 @@ class Account extends Controller {
 				Router::sendTo('register');
 			}
 
-			if(!preg_match('/^[a-zA-Z0-9_]+$/',$username)) {
+			/*if(!preg_match('/^[a-zA-Z0-9_]+$/',$username)) {
 				Session::setOwn('alert-type', 'error');
 				Session::setOwn('alert-message', 'You have entered an invalid username, please only use letters and numbers.');
 				Router::sendTo('register');
@@ -87,7 +87,7 @@ class Account extends Controller {
 				Session::setOwn('alert-type', 'error');
 				Session::setOwn('alert-message', 'Your name is too long, please chose a username which is 16 characters or less');
 				Router::sendTo('register');
-			}
+			}*/
 			
 			if(strlen($form->field->regpassword) < 6) {
 				Session::setOwn('alert-type', 'error');
@@ -101,15 +101,15 @@ class Account extends Controller {
 				Router::sendTo('register');
 			}
 			
-			if(UserDao::exists('username', $username)) {
+			/*if(UserDao::exists('username', $username)) {
 				Session::setOwn('alert-type', 'error');
 				Session::setOwn('alert-message', 'The username you chose is already in use');
 				Router::sendTo('register');
-			}
+			}*/
 
 			if(UserDao::exists('email', $email)) {
 				Session::setOwn('alert-type', 'error');
-				Session::setOwn('alert-message', 'The email you chose is already in use');
+				Session::setOwn('alert-message', 'The email you chose is already in use!');
 				Router::sendTo('register');
 			}
 

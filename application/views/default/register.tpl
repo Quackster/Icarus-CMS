@@ -43,12 +43,12 @@
 					<form action="account/register" method="POST">
 					
 						<h2 id="text-main">Welcome to Icarus Hotel!</h2>
-						<p class="register-text">
+						<!-- <p class="register-text">
 							You'll need to use this username to log in to Icarus in the future. Please choose carefully.
 							<br>
 							<br>
 							<input class="register-border" type="text" placeholder="Username" name="regusername" required>
-						</p>
+						</p> -->
 						
 
 						<p class="register-text">

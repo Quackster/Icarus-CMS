@@ -53,7 +53,7 @@
 					<br>
 					<p>Already have an account? Log in here!</p>
 					<form action="account/login" method="POST">
-						<p><input class="login-border" type="text" placeholder="Username" name="username" required></p>
+						<p><input class="login-border" type="text" placeholder="Email" name="email" required></p>
 						<p><input class="login-border" type="password" placeholder="Password" name="password" required></p>
 						<center><button class="login-button" id="text-main" type="submit">LOGIN</button></center>
 					</form>	

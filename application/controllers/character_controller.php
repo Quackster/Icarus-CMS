@@ -7,8 +7,15 @@ class Character extends Controller {
 
 	public function me() {
 		
-		if(!Session::isAuthed()) { Router::sendTo('index'); return; }
+		if (!Session::isAuthed()) { Router::sendTo('index'); return; }
 
+        if (Session::isAuthed()) {
+            if (Session::auth()->username == "") { 
+                Router::sendTo('client'); 
+                return;
+            }
+        }
+        
 		$this->load_view("me");
 		$this->view->publish();
 	
@@ -20,19 +27,17 @@ class Character extends Controller {
 		
 		UserDao::updateSSO();
 		
-		$this->load_view("client");
+        if (Session::auth()->username != "") {
+            $this->load_view("client");
+        } else {
+            $this->load_view("client_new");
+        }
+        
 		$this->view->publish();
 	
 	}
     
-    public function hotelnew() {
-		
-		if(!Session::isAuthed()) { Router::sendTo('index'); return; }
-		
-		UserDao::updateSSO();
-		
-		$this->load_view("client_new");
-		$this->view->publish();
-	
+    public function disconnected() {
+        print_r($_POST);
     }
 }

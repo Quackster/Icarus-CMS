@@ -76,7 +76,7 @@
 					<div id="div-header-top"><p>Enter Hotel</p></div>
 					<br>
 					<p>Can't wait to join the hotel? Click the button below!</p>
-					<p><a onClick="openLink()" href="#"><center><button class="enter-hotel" id="text-main" type="submit">ENTER NOW</button></center></a></p>
+					<p><a <?php echo (Site::getConfig()->site->client_popup ? 'onClick="openLink()" href="#"' : 'target="_blank" href="hotel"');?>><center><button class="enter-hotel" id="text-main" type="submit">ENTER NOW</button></center></a></p>
 					<!-- seperator -->
 					<div id="div-header-middle" style="margin-top: -4px"><p>Extra Links</p></div>
 					<br>

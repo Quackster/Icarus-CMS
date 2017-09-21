@@ -66,15 +66,10 @@ class Router
 				}
 			}
 
-			if (!startsWith($caller, "/profile"))
-			{
-				$splitted = explode('.', self::$routes[$caller]);
-			}
-			
+			$splitted = explode('.', self::$routes[$caller]);
 			$controller = $splitted[0];
 			$method = substr($splitted[1], 0, -2);
 
-		
 			if(file_exists(APP_PATH . '/controllers/' . $controller . '_controller.php')) {
 				
 				require_once APP_PATH . '/controllers/' . $controller . '_controller.php';

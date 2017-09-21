@@ -22,6 +22,7 @@ class Site {
 		Site::$config->site = new StdClass();
 		Site::$config->register = new StdClass();
 		Site::$config->security = new StdClass();
+        Site::$config->client = new StdClass();
 		Site::$session = new StdClass();
 		
 		foreach($_SESSION as $key => $value) {

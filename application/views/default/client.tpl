@@ -1,7 +1,7 @@
 <?php
 
-$path = "localhost";
-$build = "PRODUCTION-201701242205-837386173";
+$path = "icarus.dev";
+$build = "PRODUCTION-201709192204-203982672";
 
 ?>
 
@@ -57,27 +57,26 @@ $build = "PRODUCTION-201701242205-837386173";
         var flashvars = {
             "client.allow.cross.domain": "1",
             "client.notify.cross.domain": "0",
-            "connection.info.host": "localhost",
+            "connection.info.host": "icarus.dev",
             "connection.info.port": "30000",
             "site.url": "{$site->url}/",
-            "url.prefix": "{$site->url}/",
+            "url.prefix": "{$site->url}",
             "client.reload.url": "/disconnected",
             "client.fatal.error.url": "{$site->url}/disconnected",
             "client.connection.failed.url": "{$site->url}/disconnected",
-            "external.variables.txt": "http://localhost/gamedata/external_variables.txt?<?php echo rand(1,1000); ?>",
-            "external.texts.txt": "http://localhost/gamedata/external_flash_texts.txt?<?php echo rand(1,1000); ?>",
-            "external.override.texts.txt": "http://localhost/gamedata/override/external_flash_override_texts.txt?<?php echo rand(1,1000); ?>",
-            "external.override.variables.txt": "http://localhost/gamedata/override/external_override_variables.txt?<?php echo rand(1,1000); ?>",
-            "productdata.load.url": "http://localhost/gamedata/productdata.txt",
-            "furnidata.load.url": "http://localhost/gamedata/furnidata.xml",
-            "hotelview.banner.url": "http://localhost/gamedata/banner.png",
+            "external.variables.txt": "<?php echo Site::getConfig()->client->external_variables; ?>",
+            "external.texts.txt": "<?php echo Site::getConfig()->client->external_flash_texts; ?>",
+            "external.override.texts.txt": "<?php echo Site::getConfig()->client->external_override_texts; ?>",
+            "external.override.variables.txt": "<?php echo Site::getConfig()->client->external_override_variables; ?>",
+            "productdata.load.url": "<?php echo Site::getConfig()->client->productdata; ?>",
+            "furnidata.load.url": "<?php echo Site::getConfig()->client->furnidata; ?>",
             "use.sso.ticket": "1",
             "sso.ticket": "{$user->ssoticket}",
             "processlog.enabled": "0",
             "account_id": "1",
             "client.starting": "Hotel is loading, please wait.",
 			"client.starting.revolving":"For science, you monster\/Loading funny message\u2026please wait.\/Would you like fries with that?\/Follow the yellow duck.\/Time is just an illusion.\/Are we there yet?!\/I like your t-shirt.\/Look left. Look right. Blink twice. Ta da!\/It\'s not you, it\'s me.\/Shhh! I\'m trying to think here.\/Loading pixel universe.",
-            "flash.client.url": "{$site->url}/gordon/<?php echo $build; ?>/",
+            "flash.client.url": "<?php echo Site::getConfig()->client->path; ?>",
             "user.hash": "ticket",
             "has.identity": "0",
             "flash.client.origin": "popup",
@@ -86,7 +85,7 @@ $build = "PRODUCTION-201701242205-837386173";
 
         };
         var params = {
-            "base": "{$site->url}/gordon/<?php echo $build; ?>/",
+            "base": "<?php echo Site::getConfig()->client->path; ?>",
             "allowScriptAccess": "always",
             "menu": "false"
         };
@@ -95,7 +94,7 @@ $build = "PRODUCTION-201701242205-837386173";
 
         FlashExternalInterface.signoutUrl = "/disconnected";
 
-        var clientUrl = "{$site->url}/gordon/<?php echo $build; ?>/Habbo.swf";
+        var clientUrl = "<?php echo Site::getConfig()->client->swf; ?>";
         swfobject.embedSWF(clientUrl, "flash-container", "100%", "100%", "11.1.0", "/client/expressInstall.swf", flashvars, params, null, FlashExternalInterface.embedSwfCallback);
 
         window.onbeforeunload = unloading;

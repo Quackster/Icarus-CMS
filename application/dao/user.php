@@ -69,7 +69,7 @@ class UserDao {
 	public static function create($data) {
 
 		$user = R::dispense('users');
-		$user->username = $data->field->regusername;
+		$user->username = "";
 		$user->password = password_hash($data->field->regpassword, PASSWORD_DEFAULT);
 		$user->email = $data->field->regemail;
 		$user->mission = Site::getConfig()->register->motto;
