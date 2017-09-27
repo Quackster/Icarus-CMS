@@ -2,9 +2,9 @@
 <html>
 <title>Icarus: Hotel</title>
 <head>
-    <link rel="stylesheet" type="text/css" href="http://icarus.dev/api/hotel.731d1960.css">
-    <script type="text/javascript" src="http://icarus.dev/api/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="http://icarus.dev/api/swfobject.js"></script>
+    <link rel="stylesheet" type="text/css" href="{$site->url}/api/hotel.731d1960.css">
+    <script type="text/javascript" src="{$site->url}/api/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{$site->url}/api/swfobject.js"></script>
     <script type="text/javascript">
         var flashvars = {
             "new.user.flow.enabled":"true",
@@ -35,7 +35,7 @@
             "new.user.flow.intro3":"Just one more thing! Tell us what kind of room you want to start with. It\'s not for life, so don\'t overthink it!",
             "new.user.flow.intro2":"Looking good! Next, give your Habbo a name. (Or skip and think of a good one later)",
             "supersonic_application_key":"2abb40ad",
-            "connection.info.host":"localhost",
+            "connection.info.host":"<?php echo Site::getConfig()->client->ip; ?>",
             "new.user.onboarding.hc.flow.enabled":"true",
             "client.notify.cross.domain":"0",
             "new.user.flow.onboarding.choose.your.name":"Choose your name",
@@ -52,24 +52,24 @@
             "new.user.flow.onboarding.your.looks":"Choose looks",
             "new.user.flow.note.header":"For choosing Habbo!",
             "new.user.flow.save":"I\'ll wear this!",
-            "connection.info.port":"30000",
+            "connection.info.port":"<?php echo Site::getConfig()->client->port; ?>",
             "furnidata.load.url":"<?php echo Site::getConfig()->client->furnidata; ?>",
             "new.user.flow.onboarding.hint.hc":"You\'ve selected Habbo club items but you\'ll have to purchase it to wear them!",
             "external.variables.txt":"<?php echo Site::getConfig()->client->external_variables; ?>",
             "client.allow.cross.domain":"1",
             "nux.lobbies.enabled":"true",
             "external.override.texts.txt":"<?php echo Site::getConfig()->client->external_override_texts; ?>",
-            "supersonic_custom_css":"https:\/\/icarus.dev\/game-data-server-static\/\/.\/hotel.731d1960.css",
+            "supersonic_custom_css":"{$site->url}/api/hotel.731d1960.css",
             "external.figurepartlist.txt":"<?php echo Site::getConfig()->client->figuredata; ?>",
             "flash.client.origin":"popup",
             "new.user.flow.onboard.what.is.hc.description":"What is Habbo Club?\nHabbo Club is a special club you can join to get access to more clothing styles, exclusive room designs, more space on your friends list and lots more",
-            "new.user.flow.galleryUrl":"\/\/icarus.dev\/c_images\/nux\/",
+            "new.user.flow.galleryUrl":"{$site->url}/c_images/nux/",
             "new.user.reception.minLength":"2",
             "processlog.enabled":"1",
             "new.user.flow.page":"1",
             "new.user.flow.title":"Thank You",
             "new.user.flow.roomTypes":"10,11,12",
-            "avatareditor.promohabbos":"https:\/\/www.habbo.com\/api\/public\/lists\/hotlooks",
+            "avatareditor.promohabbos":"{$site->url}/api/public/lists/hotlooks.xml",
             "new.user.onboarding.show.hc.items":"false",
             "new.user.flow.name":"<?php echo "character" . rand(1000,9000); ?>",
             "new.user.reception.maxLength":"15",
@@ -95,7 +95,7 @@
             "new.user.flow.room.description.10":"For the Habbo who really likes shiny things",
         };
     </script>
-    <script type="text/javascript" src="http://icarus.dev/api/habboapi.js"></script>
+    <script type="text/javascript" src="{$site->url}/api/habboapi.js"></script>
     <script type="text/javascript">
         var params = {
             "base" : "<?php echo Site::getConfig()->client->path; ?>",

@@ -57,8 +57,8 @@ $build = "PRODUCTION-201709192204-203982672";
         var flashvars = {
             "client.allow.cross.domain": "1",
             "client.notify.cross.domain": "0",
-            "connection.info.host": "icarus.dev",
-            "connection.info.port": "30000",
+            "connection.info.host": "<?php echo Site::getConfig()->client->ip; ?>",
+            "connection.info.port": "<?php echo Site::getConfig()->client->port; ?>",
             "site.url": "{$site->url}/",
             "url.prefix": "{$site->url}",
             "client.reload.url": "/disconnected",

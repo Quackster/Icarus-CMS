@@ -11,7 +11,7 @@ Router::add('/account/register', 'account.register()');
 
 Router::add('/me', 'character.me()');
 Router::add('/hotel', 'character.hotel()');
-Router::add('/client', 'character.hotel()');
+//Router::add('/client', 'character.hotel()');
 Router::add('/disconnected', 'character.disconnected()');
 Router::add('/habbo-imaging/badge', 'hotel.badge()');
 

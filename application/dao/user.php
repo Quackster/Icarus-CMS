@@ -59,11 +59,14 @@ class UserDao {
 	
 	public static function updateSSO() {
 		
-		$sso_ticket = "sso-icarus-" . randString(10) . "-" . randString(6) . "-" . randString(10);
-		
-		Session::auth()->sso_ticket = $sso_ticket;
-		
-		R::exec("UPDATE users SET sso_ticket = ? WHERE id = ". Session::auth()->id, array($sso_ticket));
+        if (Session::auth()->sso_ticket != NULL) {
+            if (strlen(Session::auth()->sso_ticket) > 0) {
+                return;
+            }
+        }
+        
+		$ssoticket = "sso-icarus-" . randString(10) . "-" . randString(6) . "-" . randString(10);
+		R::exec("UPDATE users SET sso_ticket = ? WHERE id = ". Session::auth()->id, array($ssoticket));
 	}
 
 	public static function create($data) {
