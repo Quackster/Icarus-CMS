@@ -15,4 +15,8 @@ class SiteDao {
 		return $array;
 	}
 	
+	public static function getValue($key) {
+		$site = R::getAll('SELECT * FROM `site_config` WHERE `key` = ?', array($key));
+		return $site[0]['value'];
+	}
 }

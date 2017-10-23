@@ -35,7 +35,7 @@ class View
 
     public function setDefaults() {
 
-        //$this->bind('users-online', UserDao::usersOnline());
+        $this->bind('users-online', SiteDao::getValue("users.online"));
 
         foreach(get_object_vars(Site::getConfig()->site) as $key => $value) {
             $this->bind("site->" . $key, $value);

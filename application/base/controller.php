@@ -6,7 +6,6 @@ class Controller {
 
 	public function __construct() {
 		R::setup('mysql:host=' . Site::getConfig()->db->host . ';dbname=' . Site::getConfig()->db->database, Site::getConfig()->db->username, Site::getConfig()->db->password);
-		R::setStrictTyping(false);
 		if(!Site::getConfig()->db->development_mode) {
 			R::freeze(true);
 		}

@@ -50,12 +50,6 @@ class UserDao {
 
 		return true;
 	}
-
-	public static function usersOnline() {
-		$status = R::load('system', "online_count");
-		return $status->value;
-		//return count(R::getAll("SELECT * FROM `users` WHERE `online` = :online", array(":online" => "1")));
-	}
 	
 	public static function updateSSO() {
 		

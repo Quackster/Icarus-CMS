@@ -38,7 +38,7 @@
 					<p></p>
 					<div id="register-text">
 						<h3>MAKE FRIENDS & CHAT WITH MILLIONS IN A VIRTUAL WORLD</h3>
-						<p>There are currently 1000 players online!</p>
+						<p>There are currently {$users-online} players online!</p>
 						<a href="/register"><center><button class="register-button" id="text-main" type="submit">JOIN NOW</button></center></a>
 					</div>
 					<br>
