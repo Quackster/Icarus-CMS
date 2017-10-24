@@ -11,7 +11,7 @@ class Character extends Controller {
 
         if (Session::isAuthed()) {
             if (Session::auth()->username == "") { 
-                Router::sendTo('client'); 
+                Router::sendTo('hotel'); 
                 return;
             }
         }

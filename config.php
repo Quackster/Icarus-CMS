@@ -8,6 +8,7 @@ Site::getConfig()->db->development_mode = false;
 
 Site::getConfig()->register->motto = "I'm a new user!";
 Site::getConfig()->register->credits = 5000;
+Site::getConfig()->register->duckets = 5000;
 Site::getConfig()->register->figure = "ch-210-66.hr-100-0.sh-290-80.hd-180-7.lg-270-82";
 
 Site::getConfig()->site->template = 'default';
@@ -31,7 +32,7 @@ Site::getConfig()->client->external_override_variables = "http://icarus.dev/game
 Site::getConfig()->client->productdata = "http://icarus.dev/gamedata/productdata.txt";
 Site::getConfig()->client->furnidata = "http://icarus.dev/gamedata/furnidata.xml";
 Site::getConfig()->client->figuredata = "http://icarus.dev/gamedata/figuredata.xml";
-Site::getConfig()->client->path = "http://icarus.dev/gordon/PRODUCTION-201709192204-203982672/";
-Site::getConfig()->client->swf = "http://icarus.dev/gordon/PRODUCTION-201709192204-203982672/Habbo.swf?version=" . time();
+Site::getConfig()->client->path = "http://icarus.dev/gordon/PRODUCTION-201710172204-432325793/";
+Site::getConfig()->client->swf = "http://icarus.dev/gordon/PRODUCTION-201710172204-432325793/Habbo.swf?version=" . time();
 
 ?>

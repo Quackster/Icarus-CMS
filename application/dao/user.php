@@ -71,6 +71,7 @@ class UserDao {
 		$user->email = $data->field->regemail;
 		$user->mission = Site::getConfig()->register->motto;
 		$user->credits = Site::getConfig()->register->credits;
+		$user->duckets = Site::getConfig()->register->duckets;
 		$user->figure = Site::getConfig()->register->figure;
 		$user->last_online = time();
 		$user->join_date = time();
